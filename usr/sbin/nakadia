@@ -11,6 +11,12 @@ function start () {
 	sudo -E docker run -d --name ${CONTAINER_NAME} \
 	  -e "SPLUNK_START_ARGS=--accept-license" -e "SPLUNK_PASSWORD=cybersecurity" \
 		-p 10.55.55.6:8000:8000/tcp \
+		-p 10.55.55.6:8065:8065/tcp \
+		-p 10.55.55.6:8088:8088/tcp \
+		-p 10.55.55.6:8089:8089/tcp \
+		-p 10.55.55.6:8191:8191/tcp \
+		-p 10.55.55.6:9887:9887/tcp \
+		-p 10.55.55.6:9997:9997/tcp \
 		-p 10.55.55.6:9001:9001/udp \
 		${CONTAINER_IMAGE}
 }
