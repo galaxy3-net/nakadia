@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+container-rm bind
