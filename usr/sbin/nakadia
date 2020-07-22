@@ -12,6 +12,7 @@ function start () {
 	sudo -E docker run -d --name ${CONTAINER_NAME} \
     --mount type=bind,source=/tmp/splunk/etc,target=/opt/splunk/etc \
     --mount type=bind,source=/tmp/splunk/var,target=/opt/splunk/var \
+    --mount type=bind,source=/Downloads,target=/Downloads \
 	  -e "SPLUNK_START_ARGS=--accept-license" \
 	  -e "SPLUNK_PASSWORD=cybersecurity" \
 	  -e "SPLUNK_USERNAME=admin" \
