@@ -13,7 +13,6 @@ function start () {
     --mount type=bind,source=/tmp/splunk/etc,target=/opt/splunk/etc \
     --mount type=bind,source=/tmp/splunk/var,target=/opt/splunk/var \
     --mount type=bind,source=/tmp/splunk/var,target=/opt/splunk/etc/system/local \
-    --mount type=bind,source=/repos/nakadia/etc/system/local/,target=/opt/splunk/etc/system/local/inputs.conf \
 	  -e "SPLUNK_START_ARGS=--accept-license" \
 	  -e "SPLUNK_PASSWORD=cybersecurity" \
 	  -e "SPLUNK_USERNAME=admin" \
