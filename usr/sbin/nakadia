@@ -53,6 +53,7 @@ systemctl start docker
 
 container-rm ${CONTAINER_NAME}
 start
+cp etc/system/local/inputs.conf /tmp/splunk/etc/system/local/inputs.conf
 #wait_on_startup
 #load_data
 container-alive-monitor ${CONTAINER_NAME}
