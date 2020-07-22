@@ -58,8 +58,8 @@ start
 
 sleep 150
 
-cat /repos/nakadia/etc/system/local/inputs.conf >> /tmp/splunk/etc/system/local/inputs.conf
-cat /repos/nakadia/etc/system/default/indexes.conf >> /tmp/splunk/etc/system/default/indexes.conf
+cat /repos/nakadia/Docker/etc/system/local/inputs.conf >> /tmp/splunk/etc/system/local/inputs.conf
+cat /repos/nakadia/Docker/etc/system/default/indexes.conf >> /tmp/splunk/etc/system/default/indexes.conf
 
 
 sudo docker exec -i --user splunk splunk /bin/bash -c "bin/splunk restart"
