@@ -21,7 +21,7 @@ start:
 
 .PHONY: connect
 connect:
-	sudo -E docker exec -it --user splunk splunk /bin/bash
+	sudo docker -E exec -it --user splunk splunk /bin/bash
 
 .PHONY: stop
 stop:

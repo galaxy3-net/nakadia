@@ -44,7 +44,7 @@ function wait_on_startup () {
 #  done
 }
 
-cd /repos/bind/Docker
+cd /repos/nakadia/Docker
 make pull
 
 #ifconfig eth1:2 10.55.55.6 netmask 255.255.255.0 up
@@ -54,7 +54,7 @@ systemctl start docker
 
 container-rm ${CONTAINER_NAME}
 start
-wait_on_startup
+#wait_on_startup
 #load_data
 container-alive-monitor ${CONTAINER_NAME}
 
