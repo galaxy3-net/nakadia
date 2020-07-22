@@ -59,7 +59,7 @@ sleep 150
 cp etc/system/local/inputs.conf /tmp/splunk/etc/system/local/inputs.conf
 cat etc/system/local/indexes.conf >> /tmp/splunk/etc/system/local/indexes.conf
 
-sudo docker exec -it --user splunk splunk /bin/bash -c "bin/splunk restart"
+sudo docker exec -i --user splunk splunk /bin/bash -c "bin/splunk restart"
 
 #wait_on_startup
 #load_data
