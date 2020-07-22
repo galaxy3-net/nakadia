@@ -35,7 +35,7 @@ function load_data () {
 
 function wait_on_startup () {
 
-  until docker exec -it --user splunk splunk /bin/bash -c "bin/splunk status" | grep 'splunk helpers are running22'
+  until docker exec --user splunk splunk /bin/bash -c "bin/splunk status" | grep 'splunk helpers are running22'
   do
     echo waiting on splunk
     sleep 10
