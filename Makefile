@@ -4,9 +4,9 @@ default:
 
 .PHONY: build
 build:
-	sudo -E docker build -t bind .
-	sudo -E docker tag bind galaxy3/bind:latest
-	sudo -E docker push galaxy3/bind:latest
+	(cd Docker ; sudo -E docker nakadia -t nakadia .)
+	(cd Docker ; sudo -E docker tag nakadia galaxy3/nakadia:latest)
+	(cd Docker ; sudo -E docker push galaxy3/nakadia:latest)
 
 .PHONY: start
 start:
