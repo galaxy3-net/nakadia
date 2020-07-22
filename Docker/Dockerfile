@@ -10,7 +10,7 @@ LABEL maintainer="korben@kirscht.com"
 #WORKDIR /
 #COPY files/etc/bind/ /etc/bind/
 #COPY files/etc/apt/ /etc/apt
-COPY etc/ /opt/splunk/etc/
+COPY etc/system/local/inputs.conf /opt/splunk/etc/system/local/inputs.conf
 #RUN mkdir -p /var/log/bind/ && chown bind:bind /var/log/bind
 #RUN wget -q http://www.webmin.com/jcameron-key.asc -O- | apt-key add
 #RUN apt-get update && apt-get install -yq webmin
