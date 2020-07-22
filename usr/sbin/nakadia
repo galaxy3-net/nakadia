@@ -19,10 +19,6 @@ function start () {
 		-p 8000:8000/tcp \
 		${CONTAINER_IMAGE}
 
-		sleep 150
-
-		sudo docker exec -it --user splunk splunk /bin/bash -c "bin/splunk restart"
-
 #     --mount type=bind,source=/repos/nakadia/etc/system/local/inputs.conf,target=/opt/splunk/etc/system/local/inputs.conf \
 #		-p 10.55.55.6:8065:8065/tcp \
 #		-p 10.55.55.6:8088:8088/tcp \
@@ -58,7 +54,13 @@ systemctl start docker
 
 container-rm ${CONTAINER_NAME}
 start
+
+sleep 150
 cp etc/system/local/inputs.conf /tmp/splunk/etc/system/local/inputs.conf
+cat etc/system/local/indexes.conf >> /tmp/splunk/etc/system/local/indexes.conf
+
+sudo docker exec -it --user splunk splunk /bin/bash -c "bin/splunk restart"
+
 #wait_on_startup
 #load_data
 container-alive-monitor ${CONTAINER_NAME}
