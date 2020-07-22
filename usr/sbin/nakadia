@@ -56,10 +56,10 @@ systemctl start docker
 container-rm ${CONTAINER_NAME}
 start
 
-sleep 150
 cat /repos/nakadia/etc/system/local/inputs.conf >> /tmp/splunk/etc/system/local/inputs.conf
 cat /repos/nakadia/etc/system/local/indexes.conf >> /tmp/splunk/etc/system/local/indexes.conf
 
+sleep 150
 sudo docker exec -i --user splunk splunk /bin/bash -c "bin/splunk restart"
 
 #wait_on_startup
