@@ -13,6 +13,7 @@ function start () {
     --mount type=bind,source=/tmp/splunk/etc,target=/opt/splunk/etc \
     --mount type=bind,source=/tmp/splunk/var,target=/opt/splunk/var \
     --mount type=bind,source=/Downloads,target=/Downloads \
+    --mount type=bind,source=/repos,target=/repos \
 	  -e "SPLUNK_START_ARGS=--accept-license" \
 	  -e "SPLUNK_PASSWORD=cybersecurity" \
 	  -e "SPLUNK_USERNAME=admin" \
@@ -56,8 +57,8 @@ container-rm ${CONTAINER_NAME}
 start
 
 sleep 150
-cp etc/system/local/inputs.conf /tmp/splunk/etc/system/local/inputs.conf
-cat etc/system/local/indexes.conf >> /tmp/splunk/etc/system/local/indexes.conf
+cat /repos/nakadia/etc/system/local/inputs.conf >> /tmp/splunk/etc/system/local/inputs.conf
+cat /repos/nakadia/etc/system/local/indexes.conf >> /tmp/splunk/etc/system/local/indexes.conf
 
 sudo docker exec -i --user splunk splunk /bin/bash -c "bin/splunk restart"
 
