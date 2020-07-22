@@ -30,7 +30,7 @@ function start () {
 }
 
 function load_data () {
-  docker exec -it --user splunk splunk /bin/bash -c "bin/splunk add monitor /Downloads/splunk"
+  docker exec -i --user splunk splunk /bin/bash -c "bin/splunk add monitor /Downloads/splunk"
 }
 
 function wait_on_startup () {
