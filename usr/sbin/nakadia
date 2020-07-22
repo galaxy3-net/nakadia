@@ -54,7 +54,7 @@ systemctl start docker
 container-rm ${CONTAINER_NAME}
 start
 wait_on_startup
-load_data
+#load_data
 container-alive-monitor ${CONTAINER_NAME}
 
 
