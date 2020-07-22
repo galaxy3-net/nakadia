@@ -29,6 +29,19 @@ function start () {
 
 }
 
+function load_data () {
+  docker exec -it --user splunk splunk /bin/bash -c "bin/splunk add monitor /Downloads/splunk"
+}
+
+function wait_on_startup () {
+
+  until docker exec -it --user splunk splunk /bin/bash -c "bin/splunk status" | grep 'splunk helpers are running22'
+  do
+    echo waiting on splunk
+    sleep 10
+  done
+}
+
 cd /repos/bind/Docker
 make pull
 
@@ -36,6 +49,8 @@ make pull
 
 container-rm ${CONTAINER_NAME}
 start
+wait_on_startup
+load_data
 container-alive-monitor ${CONTAINER_NAME}
 
 
