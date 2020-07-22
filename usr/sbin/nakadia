@@ -4,7 +4,7 @@ exec | tee -a /var/log/nakadia_startup.log
 exec 2>&1
 
 CONTAINER_NAME=splunk
-CONTAINER_IMAGE=galaxy3/nakadia:latest
+CONTAINER_IMAGE=splunk/splunk:latest
 
 function start () {
     mkdir -p /tmp/splunk/{etc,var}
