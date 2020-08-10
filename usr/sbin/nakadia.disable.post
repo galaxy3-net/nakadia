@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-container-rm splunk
+docker stop splunk
+docker rm splunk
