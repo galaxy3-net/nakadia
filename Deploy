@@ -22,4 +22,6 @@ chown root:root /etc/supervisor/conf.d/splunk.conf
 chmod 0400 /etc/supervisor/conf.d/splunk.conf
 
 supervisorctl reread
+supervisorctl update
+
 
