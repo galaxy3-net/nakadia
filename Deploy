@@ -15,7 +15,7 @@ ls /srv/splunk || git clone https://github.com/galaxy3-net/nakadia.git /srv/splu
 
 cp /srv/splunk/usr/sbin/nakadia /usr/sbin/splunk
 chown root:root /usr/sbin/splunk
-chmod 0600 /usr/sbin/splunk
+chmod 0700 /usr/sbin/splunk
 cp /srv/splunk/etc/supervisor/conf.d/nakadia.conf /etc/supervisor/conf.d/splunk.conf
 chown root:root /etc/supervisor/conf.d/splunk.conf
 chmod 0400 /etc/supervisor/conf.d/splunk.conf
