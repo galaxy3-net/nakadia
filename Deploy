@@ -9,7 +9,7 @@ __EOF__
 
   exit 1
 }
-
+set -x
 mkdir -p /srv/
 ls /srv/splunk || git clone https://github.com/galaxy3-net/nakadia.git /srv/splunk
 (cd /srv/splunk && git pull)
