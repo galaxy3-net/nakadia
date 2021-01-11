@@ -20,5 +20,5 @@ cp /srv/splunk/etc/supervisor/conf.d/nakadia.conf /etc/supervisor/conf.d/splunk.
 chown root:root /etc/supervisor/conf.d/splunk.conf
 chmod 0400 /etc/supervisor/conf.d/splunk.conf
 
-supervisorctl reload
+supervisorctl reread
 
