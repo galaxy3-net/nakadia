@@ -11,7 +11,7 @@ __EOF__
 }
 
 mkdir -p /srv/
-ls /srv/nakadia || git clone https://github.com/galaxy3-net/nakadia.git /srv/splunk
+ls /srv/splunk || git clone https://github.com/galaxy3-net/nakadia.git /srv/splunk
 
 cp /srv/splunk/usr/sbin/nakadia /usr/sbin/splunk
 chown root:root /usr/sbin/splunk
