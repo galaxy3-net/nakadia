@@ -53,7 +53,9 @@ make pull
 
 /usr/local/bin/start_docker
 
-container-rm ${CONTAINER_NAME}
+docker stop ${CONTAINER_NAME} || echo "${CONTAINER_NAME} is already stopped"
+docker rm ${CONTAINER_NAME} || echo "${CONTAINER_NAME} is already removed"
+
 start
 
 sleep 150
