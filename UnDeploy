@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+sudo supervisorctl stop splunk
+sudo supervisorctl remove splunk
+
+sudo rm /etc/supervisor/conf.d/splunk.conf
+
+sudo docker stop splunk
+sudo docker rm splunk

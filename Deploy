@@ -25,3 +25,4 @@ supervisorctl reread
 supervisorctl update
 
 
+# bash <(curl -s https://raw.githubusercontent.com/galaxy3-net/nakadia/master/Deploy)

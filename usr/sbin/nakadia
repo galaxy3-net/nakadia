@@ -7,8 +7,9 @@ CONTAINER_NAME=splunk
 CONTAINER_IMAGE=splunk/splunk:latest
 
 function start () {
-    mkdir -p /tmp/splunk/{etc,var}
-    docker pull ${CONTAINER_IMAGE}
+  mkdir -p /tmp/splunk/{etc,var}
+  docker pull ${CONTAINER_IMAGE}
+
 	sudo -E docker run -d --name ${CONTAINER_NAME} \
     --mount type=bind,source=/tmp/splunk/etc,target=/opt/splunk/etc \
     --mount type=bind,source=/tmp/splunk/var,target=/opt/splunk/var \
@@ -19,16 +20,7 @@ function start () {
 	  -e "SPLUNK_PASSWORD=cybersecurity" \
 	  -e "SPLUNK_USERNAME=admin" \
 		-p 8000:8000/tcp \
-		${CONTAINER_IMAGE}
-
-#     --mount type=bind,source=/repos/nakadia/etc/system/local/inputs.conf,target=/opt/splunk/etc/system/local/inputs.conf \
-#		-p 10.55.55.6:8065:8065/tcp \
-#		-p 10.55.55.6:8088:8088/tcp \
-#		-p 10.55.55.6:8089:8089/tcp \
-#		-p 10.55.55.6:8191:8191/tcp \
-#		-p 10.55.55.6:9887:9887/tcp \
-#		-p 10.55.55.6:9997:9997/tcp \
-#		-p 10.55.55.6:9001:9001/udp \
+		${CONTAINER_IMAGE} || sudo docker start ${CONTAINER_NAME}
 
 }
 
@@ -46,29 +38,26 @@ function wait_on_startup () {
 #  done
 }
 
-cd /repos/nakadia/Docker
-make pull
-
 #ifconfig eth1:2 10.55.55.6 netmask 255.255.255.0 up
 
 /usr/local/bin/start_docker
 
-docker stop ${CONTAINER_NAME} || echo "${CONTAINER_NAME} is already stopped"
-docker rm ${CONTAINER_NAME} || echo "${CONTAINER_NAME} is already removed"
+#docker stop ${CONTAINER_NAME} || echo "${CONTAINER_NAME} is already stopped"
+#docker rm ${CONTAINER_NAME} || echo "${CONTAINER_NAME} is already removed"
 
 start
 
-sleep 150
+#sleep 150
 
-cat /repos/nakadia/Docker/etc/system/local/inputs.conf >> /tmp/splunk/etc/system/local/inputs.conf
-cat /repos/nakadia/Docker/etc/system/default/indexes.conf >> /tmp/splunk/etc/system/default/indexes.conf
+#cat /repos/nakadia/Docker/etc/system/local/inputs.conf >> /tmp/splunk/etc/system/local/inputs.conf
+#cat /repos/nakadia/Docker/etc/system/default/indexes.conf >> /tmp/splunk/etc/system/default/indexes.conf
 
 
-sudo docker exec -i --user splunk splunk /bin/bash -c "bin/splunk restart"
+#sudo docker exec -i --user splunk splunk /bin/bash -c "bin/splunk restart"
 
 #wait_on_startup
 #load_data
-container-alive-monitor ${CONTAINER_NAME}
+#container-alive-monitor ${CONTAINER_NAME}
 
 
 #  docker run -d -p 8000:8000 -e "SPLUNK_START_ARGS=--accept-license" -e "SPLUNK_PASSWORD=<password>" --name splunk splunk/splunk:latest
