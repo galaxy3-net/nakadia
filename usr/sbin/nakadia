@@ -38,13 +38,19 @@ function wait_on_startup () {
 #  done
 }
 
+function start_docker () {
+	docker || apt install -y docker docker.io
+  systemctl unmask docker.service
+  systemctl unmask docker.sockete
+	docker info || (systemctl start docker ; sleep 300)
+}
+
 #ifconfig eth1:2 10.55.55.6 netmask 255.255.255.0 up
 
 case ${1} in
 
 	start)
-		docker || apt install -y docker docker.io
-		docker info || (systemctl start docker ; sleep 300)
+	  start_docker
 		start
 		;;
 
