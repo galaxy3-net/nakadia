@@ -21,8 +21,12 @@ cp /srv/splunk/etc/supervisor/conf.d/nakadia.conf /etc/supervisor/conf.d/splunk.
 chown root:root /etc/supervisor/conf.d/splunk.conf
 chmod 0400 /etc/supervisor/conf.d/splunk.conf
 
-supervisorctl reread
-supervisorctl update
+cp /srv/splunk/etc/systemd/system/nakadia.service /etc/systemd/system/splunk.service
+chown root:root /etc/systemd/system/splunk.service
+chmod 0400 /etc/systemd/system/splunk.service
+
+#supervisorctl reread
+#supervisorctl update
 
 
 # bash <(curl -s https://raw.githubusercontent.com/galaxy3-net/nakadia/master/Deploy)
