@@ -24,6 +24,7 @@ chmod 0400 /etc/supervisor/conf.d/splunk.conf
 cp /srv/splunk/etc/systemd/system/nakadia.service /etc/systemd/system/splunk.service
 chown root:root /etc/systemd/system/splunk.service
 chmod 0400 /etc/systemd/system/splunk.service
+systemctl daemon-reload
 
 #supervisorctl reread
 #supervisorctl update
